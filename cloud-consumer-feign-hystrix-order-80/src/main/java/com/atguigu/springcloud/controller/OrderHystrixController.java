@@ -29,9 +29,9 @@ public class OrderHystrixController {
 //    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler",commandProperties = {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
 //    })
-    @HystrixCommand // 使用通配的
+    //@HystrixCommand // 使用通配的
     public String paymentInfo_timeout(@PathVariable("id") Integer id){
-        int a = 1 / 10;
+        //int a = 1 / 10;
         String result = paymentHystrixService.paymentInfo_timeout(id);
         return result;
     }

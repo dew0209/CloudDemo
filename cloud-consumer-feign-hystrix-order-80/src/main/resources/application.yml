@@ -7,9 +7,20 @@ eureka:
     service-url:
       defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
 
+# 和hystrix集成之后，这个好像不管用了，默认又改为1s了
+
 ribbon:
-  ReadTimeout: 5000 # 指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间
-  ConnecTimeout: 5000 # 指的是建立连接后从服务器读取到可用资源所用的时间
+  ReadTimeout: 20000 # 指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间
+  ConnecTimeout: 20000 # 指的是建立连接后从服务器读取到可用资源所用的时间
+
 feign:
   hystrix:
     enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
